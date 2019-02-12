@@ -59,12 +59,20 @@ def normalize(filename, filename_output):
 def normalize_vectors():
 	#folder = '../../vectors/ldc95/'
 	#filenames_ldc95 = [folder + 'vectorsldc95_{}.txt'.format(x) for x in ['NYT', 'LATWP', 'REUFF', 'REUTE', 'WSJ']]
-	folder = '../../content/ldc95/'
-	filenames_ldc95 = folder + 'GoogleNews-vectors-negative300.txt'
-	for name in filenames_ldc95:
-		filename_output = name.replace('ldc95/','normalized_clean/')
-		print name,filename_output
-		normalize(name, filename_output)
+	folder = '../../vectors/all/'
+	filenames_sgns = [folder + 'vectors_sgns{}.txt'.format(x) for x in range(1910, 2000, 10)]
+	filenames_svd = [folder + 'vectors_svd{}.txt'.format(x) for x in range(1910, 2000, 10)]
+	filenames_nyt = [folder + 'vectors{}-{}.txt'.format(x, x+5) for x in range(1987, 2000, 1)]
+	filenames_coha = [folder + 'vectorscoha{}-{}.txt'.format(x, x+20) for x in range(1910, 2000, 10)]
+
+	filenames_combined = [filenames_nyt, filenames_sgns, filenames_svd, [folder + 'vectorswikipedia.txt'], [folder + 'vectorsGoogleNews_exactclean.txt']]
+
+	#filenames_ldc95 = folder + 'GoogleNews-vectors-negative300.txt'
+	for names in filenames_combined:
+		for name in names:
+			filename_output = name.replace('all/','normalized_clean/')
+			print name,filename_output
+			normalize(name, filename_output)
 
 if __name__ == "__main__":
 	normalize_vectors()
