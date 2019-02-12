@@ -57,8 +57,10 @@ def normalize(filename, filename_output):
 	print countnorm0, countnormal
 
 def normalize_vectors():
-	folder = '../../vectors/ldc95/'
-	filenames_ldc95 = [folder + 'vectorsldc95_{}.txt'.format(x) for x in ['NYT', 'LATWP', 'REUFF', 'REUTE', 'WSJ']]
+	#folder = '../../vectors/ldc95/'
+	#filenames_ldc95 = [folder + 'vectorsldc95_{}.txt'.format(x) for x in ['NYT', 'LATWP', 'REUFF', 'REUTE', 'WSJ']]
+	folder = '../../content/ldc95/'
+	filenames_ldc95 = folder + 'GoogleNews-vectors-negative300.txt'
 	for name in filenames_ldc95:
 		filename_output = name.replace('ldc95/','normalized_clean/')
 		print name,filename_output
